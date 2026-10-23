@@ -133,4 +133,4 @@ in a `&2` container, so small `Data` records stand in for tuples.
 
 ## License
 
-MIT, see `LICENSE`.
+GPL-3.0-or-later, see `LICENSE`.
