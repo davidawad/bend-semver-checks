@@ -1,0 +1,1 @@
+{"old":"v1:tests/.tmp-repo/sub/LAWS.bend","new":"tests/.tmp-repo/sub/LAWS.bend","breaking":false,"summary":{"removed":0,"changed":0,"added":1,"unchanged":4},"removed":[],"changed":[],"added":[{"name":"mul_one","line":29,"binders":["for x: Nat"],"statement":"{Nat.mul(x, 1n) == x : Nat}"}]}

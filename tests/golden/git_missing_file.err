@@ -1,0 +1,1 @@
+git show v1:tests/.tmp-repo/nope.bend failed: fatal: path 'nope.bend' does not exist in 'v1'

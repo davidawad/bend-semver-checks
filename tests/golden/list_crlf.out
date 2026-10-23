@@ -1,0 +1,1 @@
+{"file":"tests/fixtures/crlf.bend","laws":[{"name":"a","line":1,"binders":["for x: Nat"],"statement":"{x == x : Nat}"}]}

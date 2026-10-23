@@ -1,0 +1,1 @@
+{"file":"tests/fixtures/unicode.bend","laws":[{"name":"lam","line":2,"binders":["for x: String"],"statement":"{\"café λ\" == \"café λ\" : String}"},{"name":"inl","line":5,"binders":[],"statement":"{1n == 1n : Nat}"}]}

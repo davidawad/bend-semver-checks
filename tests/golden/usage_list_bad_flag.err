@@ -1,0 +1,8 @@
+usage:
+  bend-laws list <LAWS.bend>
+  bend-laws list --git <ref> <LAWS.bend>
+  bend-laws diff <old LAWS.bend> <new LAWS.bend>
+  bend-laws diff --git <ref> <LAWS.bend>
+  bend-laws --version | --help
+
+exit: 0 ok, 1 breaking change (law removed or changed), 2 usage or parse error

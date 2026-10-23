@@ -1,0 +1,1 @@
+{"old":"v1:tests/.tmp-repo/LAWS.bend","new":"tests/.tmp-repo/LAWS.bend","breaking":true,"summary":{"removed":1,"changed":0,"added":0,"unchanged":3},"removed":[{"name":"greeting","line":18,"binders":["for name: String"],"statement":"{String.append(\"hi # there  \", name) == String.append(\"hi # there  \", name) : String}"}],"changed":[],"added":[]}

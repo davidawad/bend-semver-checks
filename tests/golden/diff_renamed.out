@@ -1,0 +1,1 @@
+{"old":"tests/fixtures/base.bend","new":"tests/fixtures/renamed.bend","breaking":true,"summary":{"removed":1,"changed":0,"added":1,"unchanged":3},"removed":[{"name":"add_zero","line":5,"binders":["for x: Nat"],"statement":"{Nat.add(x, 0n) == x : Nat}"}],"changed":[],"added":[{"name":"add_zero_right","line":5,"binders":["for x: Nat"],"statement":"{Nat.add(x, 0n) == x : Nat}"}]}

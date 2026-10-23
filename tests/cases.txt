@@ -1,0 +1,50 @@
+# name  want_exit  args...      (paths are relative to the repo root; an arg
+# starting @ABS@ is the absolute repo root plus the rest). Driver: tests/run.bend
+# --- list
+list_base 0 list tests/fixtures/base.bend
+list_empty 0 list tests/fixtures/empty.bend
+list_crlf 0 list tests/fixtures/crlf.bend
+list_unicode_inline_header 0 list tests/fixtures/unicode.bend
+list_malformed 2 list tests/fixtures/malformed.bend
+list_duplicate 2 list tests/fixtures/duplicate.bend
+list_no_statement 2 list tests/fixtures/no_statement.bend
+list_missing_file 2 list tests/fixtures/nope.bend
+# --- diff
+diff_identical 0 diff tests/fixtures/base.bend tests/fixtures/base.bend
+diff_reformatted 0 diff tests/fixtures/base.bend tests/fixtures/reformatted.bend
+diff_crlf_vs_lf 0 diff tests/fixtures/crlf.bend tests/fixtures/crlf_lf.bend
+diff_added 0 diff tests/fixtures/base.bend tests/fixtures/added.bend
+diff_removed 1 diff tests/fixtures/base.bend tests/fixtures/removed.bend
+diff_changed 1 diff tests/fixtures/base.bend tests/fixtures/changed.bend
+diff_string_changed 1 diff tests/fixtures/base.bend tests/fixtures/string_changed.bend
+diff_weakened 1 diff tests/fixtures/base.bend tests/fixtures/weakened.bend
+diff_strengthened 1 diff tests/fixtures/base.bend tests/fixtures/strengthened.bend
+diff_renamed 1 diff tests/fixtures/base.bend tests/fixtures/renamed.bend
+diff_to_empty 1 diff tests/fixtures/base.bend tests/fixtures/empty.bend
+diff_from_empty 0 diff tests/fixtures/empty.bend tests/fixtures/base.bend
+diff_old_malformed 2 diff tests/fixtures/malformed.bend tests/fixtures/base.bend
+diff_new_malformed 2 diff tests/fixtures/base.bend tests/fixtures/malformed.bend
+diff_missing_old 2 diff tests/fixtures/nope.bend tests/fixtures/base.bend
+diff_missing_new 2 diff tests/fixtures/base.bend tests/fixtures/nope.bend
+# --- usage
+usage_none 2
+usage_unknown_command 2 frobnicate
+usage_list_no_file 2 list
+usage_diff_one_file 2 diff tests/fixtures/base.bend
+usage_diff_three_files 2 diff tests/fixtures/base.bend tests/fixtures/base.bend tests/fixtures/base.bend
+usage_list_bad_flag 2 list --nope main HEAD
+help 0 --help
+version 0 --version
+# --- git: tests/.tmp-repo has v1 = base.bend, HEAD = removed.bend (LAWS.bend)
+# and added.bend (sub/LAWS.bend), working tree clean
+git_list_ref 0 list --git v1 tests/.tmp-repo/LAWS.bend
+git_list_subdir 0 list --git v1 tests/.tmp-repo/sub/LAWS.bend
+git_diff_removed 1 diff --git v1 tests/.tmp-repo/LAWS.bend
+git_diff_head_clean 0 diff --git HEAD tests/.tmp-repo/LAWS.bend
+git_diff_added 0 diff --git v1 tests/.tmp-repo/sub/LAWS.bend
+git_diff_abs_path 1 diff --git v1 @ABS@/tests/.tmp-repo/LAWS.bend
+git_bad_ref 2 diff --git no-such-ref tests/.tmp-repo/LAWS.bend
+git_missing_file 2 diff --git v1 tests/.tmp-repo/nope.bend
+git_option_ref 2 diff --git --output=pwned tests/.tmp-repo/LAWS.bend
+git_list_option_ref 2 list --git -x tests/.tmp-repo/LAWS.bend
+absent git_option_ref_wrote_nothing pwned
