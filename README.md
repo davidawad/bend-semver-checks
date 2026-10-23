@@ -1,10 +1,10 @@
-# bend-laws
+# bend-semver-checks
 
 API-breakage detector for Bend 2 `LAWS.bend` files, written in Bend.
 
 In a law-driven Bend project, `LAWS.bend` states the contract and `PROOF.bend`
 proves it. If a law disappears or its statement changes, downstream code that
-relied on it is silently broken. `bend-laws` lists the laws of a file and
+relied on it is silently broken. `bend-semver-checks` lists the laws of a file and
 diffs two versions of it (two files, or a git ref against the working tree).
 
 Pinned to Bend **2.0.38** (`.bend-version`).
@@ -12,11 +12,11 @@ Pinned to Bend **2.0.38** (`.bend-version`).
 ## Usage
 
 ```
-bend-laws list <LAWS.bend>
-bend-laws list --git <ref> <LAWS.bend>
-bend-laws diff <old LAWS.bend> <new LAWS.bend>
-bend-laws diff --git <ref> <LAWS.bend>
-bend-laws --version | --help
+bend-semver-checks list <LAWS.bend>
+bend-semver-checks list --git <ref> <LAWS.bend>
+bend-semver-checks diff <old LAWS.bend> <new LAWS.bend>
+bend-semver-checks diff --git <ref> <LAWS.bend>
+bend-semver-checks --version | --help
 ```
 
 `--git <ref>` reads the old side with `git show <ref>:./<file>`, run
@@ -38,7 +38,7 @@ Errors go to stderr as one line (`path:line: message`); JSON goes to stdout.
 ### `list`
 
 ```
-$ bend-laws list LAWS.bend
+$ bend-semver-checks list LAWS.bend
 {"file":"LAWS.bend","laws":[{"name":"add_zero","line":5,"binders":["for x: Nat"],"statement":"{Nat.add(x, 0n) == x : Nat}"}]}
 ```
 
@@ -48,7 +48,7 @@ law. Both are whitespace-normalised and comment-free.
 ### `diff`
 
 ```
-$ bend-laws diff --git v1 LAWS.bend
+$ bend-semver-checks diff --git v1 LAWS.bend
 {"old":"v1:LAWS.bend","new":"LAWS.bend","breaking":true,
  "summary":{"removed":1,"changed":1,"added":0,"unchanged":3},
  "removed":[{"name":..,"line":..,"binders":[..],"statement":".."}],
@@ -109,7 +109,7 @@ Cross-check: on the 8 `LAWS.bend` files in bolt's tree (133 laws in
 Needs `bend` 2.0.38 on `PATH` (clang 14+), `just`, and `jq`, `sed`, `git` for the tests.
 
 ```
-just build     # native binary at bin/bend-laws (via `bend main.bend -o`)
+just build     # native binary at bin/bend-semver-checks (via `bend main.bend -o`)
 just test      # build + golden tests (stdout, stderr, exit code)
 just update-goldens   # rewrite tests/golden after an intended output change
 just ci        # version pin check, pin-gate self-test, typecheck + --verdict, build, test

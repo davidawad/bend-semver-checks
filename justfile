@@ -1,8 +1,8 @@
-# bend-laws: build, test and CI. Requires `bend` on PATH at the version in
+# bend-semver-checks: build, test and CI. Requires `bend` on PATH at the version in
 # .bend-version (clang 14+ for the native build), plus jq, sed and git for tests.
 
 bend := env_var_or_default("BEND", "bend")
-bin := "bin/bend-laws"
+bin := "bin/bend-semver-checks"
 
 default:
     @just --list
@@ -25,7 +25,7 @@ check: version-check
     {{bend}} main.bend --verdict
     {{bend}} tests/run.bend --check-only
 
-# Native binary at bin/bend-laws.
+# Native binary at bin/bend-semver-checks.
 build: version-check
     mkdir -p bin
     {{bend}} main.bend -o {{bin}}

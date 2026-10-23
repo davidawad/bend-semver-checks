@@ -3,21 +3,21 @@ import ./src/text.bend as T
 import ./src/law.bend as L
 import ./src/diff.bend as D
 
-# bend-laws: list the laws of a LAWS.bend and detect API breakage between two.
+# bend-semver-checks: list the laws of a LAWS.bend and detect API breakage between two.
 #
-#   bend-laws list <LAWS.bend>
-#   bend-laws list --git <ref> <LAWS.bend>
-#   bend-laws diff <old LAWS.bend> <new LAWS.bend>
-#   bend-laws diff --git <ref> <LAWS.bend>
+#   bend-semver-checks list <LAWS.bend>
+#   bend-semver-checks list --git <ref> <LAWS.bend>
+#   bend-semver-checks diff <old LAWS.bend> <new LAWS.bend>
+#   bend-semver-checks diff --git <ref> <LAWS.bend>
 #
 # Exit codes: 0 ok (diff: nothing removed or changed), 1 breaking diff,
 # 2 usage, I/O, git or parse error.
 
 def version() -> String:
-  "bend-laws 0.1.0"
+  "bend-semver-checks 0.1.0"
 
 def usage() -> String:
-  "usage:\n  bend-laws list <LAWS.bend>\n  bend-laws list --git <ref> <LAWS.bend>\n  bend-laws diff <old LAWS.bend> <new LAWS.bend>\n  bend-laws diff --git <ref> <LAWS.bend>\n  bend-laws --version | --help\n\nexit: 0 ok, 1 breaking change (law removed or changed), 2 usage or parse error"
+  "usage:\n  bend-semver-checks list <LAWS.bend>\n  bend-semver-checks list --git <ref> <LAWS.bend>\n  bend-semver-checks diff <old LAWS.bend> <new LAWS.bend>\n  bend-semver-checks diff --git <ref> <LAWS.bend>\n  bend-semver-checks --version | --help\n\nexit: 0 ok, 1 breaking change (law removed or changed), 2 usage or parse error"
 
 # 64 MB: far above any LAWS.bend.
 def max_bytes() -> U32:

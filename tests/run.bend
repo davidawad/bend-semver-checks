@@ -1,9 +1,9 @@
 import Base
 import ../src/text.bend as T
 
-# Golden-test driver for bend-laws, written in Bend (no shell).
+# Golden-test driver for bend-semver-checks, written in Bend (no shell).
 #
-#   run-tests <path to bend-laws> [--update]
+#   run-tests <path to bend-semver-checks> [--update]
 #
 # Run from the repository root. Reads tests/cases.txt; each case line is
 #   name want_exit arg...        (@ABS@ at the start of an arg = absolute repo root)
@@ -660,7 +660,7 @@ def dispatch(args: List<String>) -> IO(Unit):
     case Con{prog, Con{bin, Con{flag, Nil{}}}}:
       args2(bin, flag)
     case _:
-      die("usage: run-tests <path to bend-laws> [--update]")
+      die("usage: run-tests <path to bend-semver-checks> [--update]")
 
 
 
