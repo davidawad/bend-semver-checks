@@ -1,5 +1,11 @@
 # bend-semver-checks
 
+Tells you, before you ship, which laws in a Bend 2 `LAWS.bend` were removed or weakened, because downstream code that relied on them is now silently broken.
+
+![bend-semver-checks diff on a sample LAWS.bend](docs/showcase/diff.png)
+
+Rendered from generic sample files by [`docs/showcase/make-screenshots.sh`](docs/showcase.md).
+
 API-breakage detector for Bend 2 `LAWS.bend` files, written in Bend.
 
 In a law-driven Bend project, `LAWS.bend` states the contract and `PROOF.bend`
@@ -104,6 +110,16 @@ fork, and the law surface needed here is small. Nothing from bolt is vendored.
 Cross-check: on the 8 `LAWS.bend` files in bolt's tree (133 laws in
 `src/rules/LAWS.bend` alone) the extracted names equal `grep '^law '`.
 
+## Install
+
+Needs `bend` 2.0.38 on `PATH` (clang 14+) and `just`.
+
+```
+git clone https://github.com/davidawad/bend-semver-checks
+cd bend-semver-checks
+just build        # writes bin/bend-semver-checks
+```
+
 ## Build and test
 
 Needs `bend` 2.0.38 on `PATH` (clang 14+), `just`, and `jq`, `sed`, `git` for the tests.
@@ -116,11 +132,12 @@ just ci        # version pin check, pin-gate self-test, typecheck + --verdict, b
 ```
 
 `just ci` fails when `bend version` differs from `.bend-version`. Update the pin
-and the goldens together when upgrading Bend: `UPDATE=1 sh tests/run.sh`, then
+and the goldens together when upgrading Bend: `just update-goldens`, then
 review the diff.
 
-Tests live in `tests/run.sh` with fixtures in `tests/fixtures/` and expected
-output in `tests/golden/`. Git cases run in a throwaway repository.
+The test driver is `tests/run.bend` (cases in `tests/cases.txt`), with fixtures
+in `tests/fixtures/` and expected output in `tests/golden/`. Git cases run in a
+throwaway repository.
 
 ## Bend notes
 
