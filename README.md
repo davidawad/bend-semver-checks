@@ -120,6 +120,10 @@ cd bend-semver-checks
 just build        # writes bin/bend-semver-checks
 ```
 
+Also published on BendHub (v0.1.0, by content hash):
+`import 0xb6e6ecbad123cebebba6b71d5258ad0f/main.bend as Main`
+([hub page](https://hub.bend-lang.com/0xb6e6ecbad123cebebba6b71d5258ad0f)).
+
 ## Build and test
 
 Needs `bend` 2.0.38 on `PATH` (clang 14+), `just`, and `jq`, `sed`, `git` for the tests.
