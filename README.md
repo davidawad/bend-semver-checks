@@ -120,9 +120,9 @@ cd bend-semver-checks
 just build        # writes bin/bend-semver-checks
 ```
 
-Also published on BendHub (v0.1.0, by content hash):
-`import 0xb6e6ecbad123cebebba6b71d5258ad0f/main.bend as Main`
-([hub page](https://hub.bend-lang.com/0xb6e6ecbad123cebebba6b71d5258ad0f)).
+Also published on BendHub as `bend-semver-checks@0.1.0.0`:
+`import bend-semver-checks@0.1.0.0/main.bend as Main`
+([hub page](https://hub.bend-lang.com/0xb6e6ecbad123cebebba6b71d5258ad0f), same content hash).
 
 ## Build and test
 
